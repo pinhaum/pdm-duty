@@ -1,14 +1,13 @@
 {
   "name": "pdm-duty",
   "version": "1.0.0",
-  "main": "index.ts",
+  "main": "node_modules/expo/AppEntry.js",
   "author": {
     "name": "Gabriel Ramos",
     "email": "gcrepho@gmail.com"
   },
-  "main": "node_modules/expo/AppEntry.js",
   "scripts": {
-    "start": "expo start",
+    "start": "expo start -c",
     "android": "expo run:android",
     "ios": "expo run:ios",
     "web": "expo start --web"

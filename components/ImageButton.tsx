@@ -1,22 +1,14 @@
-// TODO: Implementação de um componente chamado “ImageButton”,
-// usado na tela de login,
-// onde o programador possa enviar uma imagem (uri) como prop e ela receba eventos onPress.
-// Pesquise sobre Pressable e Touchables.
-// Um exemplo de uso deste componente seria: <ImageButton source={imageUri…} onPress={() => handleLogin(...)}/>
-
 import {
   View,
   Text,
   StyleSheet,
   TouchableHighlight,
-  Image,
   ImageSourcePropType,
   ImageBackground,
 } from "react-native";
 import React from "react";
 
 // TODO: tratar o estilo
-// TODO: centralizar o texto do botão
 
 type ImageButtonProps = {
   source: ImageSourcePropType;

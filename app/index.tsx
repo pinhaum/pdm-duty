@@ -1,45 +1,58 @@
 import {
   View,
-  Text,
   StyleSheet,
-  SafeAreaView,
   Image,
   TextInput,
+  Button,
+  Alert,
 } from "react-native";
-import React from "react";
-import ImageButton from "app/components/ImageButton";
-
-// TODO: fix ImageButton width when inside the view
-// TODO: router
-// TODO: login
+import React, { useState } from "react";
+import ImageButton from "@/components/ImageButton";
+import { useRouter } from "expo-router";
 
 export default function Login() {
+  const router = useRouter();
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+
   const handleLogin = () => {
-    console.log("Login Button Pressed", "Autenticando...");
+    if (username === "Fulano" && password === "123") {
+      router.push("home");
+    } else {
+      Alert.alert("Erro", "Usuário ou senha inválidos", [{ text: "OK" }], {
+        cancelable: false,
+      });
+    }
   };
 
   return (
     <View style={styles.container}>
-      {/* <SafeAreaView style={styles.logo}> */}
       <Image source={require("@/assets/logo.jpg")} style={styles.logo} />
-      {/* </SafeAreaView> */}
       <View>
-        <TextInput placeholder="User" style={styles.input} />
+        <TextInput
+          placeholder="User"
+          onChangeText={setUsername}
+          style={styles.input}
+        />
         <TextInput
           placeholder="Password"
-          style={styles.input}
+          onChangeText={setPassword}
           secureTextEntry={true}
+          style={styles.input}
         />
-        <ImageButton
+        {/* <ImageButton
           source={require("@/assets/gradient.png")}
           onPress={handleLogin}
           title={"Login"}
-        />
+        /> */}
       </View>
+
+      {/* <Button title="Ir para Home" onPress={() => router.push("home")} /> */}
       <ImageButton
         source={require("@/assets/gradient.png")}
         onPress={handleLogin}
         title={"Login"}
+        width={200}
       />
     </View>
   );

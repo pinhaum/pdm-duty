@@ -1,17 +1,19 @@
 import { View, Text, Image, StyleSheet, SectionList } from "react-native";
 import React from "react";
-import data from "../services/exampleData";
-import groupByCountry from "../services/groupByCountry";
+import data from "@/services/exampleData";
+import groupByCountry from "@/helpers/groupByCountry";
+
+import HeaderWithTitle from "@/components/HeaderWithTitle";
+import HamburguerMenu from "@/components/HamburguerMenu";
 
 // TODO: fix styles
-// TODO: add header
 
 export default function Home() {
   console.log(JSON.stringify(groupByCountry(data)[0].data[0]));
 
   return (
     <View style={styles.container}>
-      <Text>Home</Text>
+      <HeaderWithTitle title={"Home"} headerRight={() => <HamburguerMenu />} />
       <SectionList
         sections={groupByCountry(data)}
         keyExtractor={(item, index) => index.toString() + item.id.toString()}
@@ -38,8 +40,9 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#f8f8f8",
-    paddingTop: 50,
+    borderRadius: 10,
   },
+
   header: {
     fontSize: 18,
     fontWeight: "bold",
